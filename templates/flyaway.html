@@ -1,0 +1,57 @@
+{%  extends extension  %}
+
+
+{% block headers %}
+{% load staticfiles %}
+<title>test...</title>
+<!--
+<link rel="stylesheet" href='{% static "ENTER CSS HERE" %}' >
+<script src="{% static 'ENTER JS HERE'  " ></script>
+-->
+<script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+
+<script>
+$(document).ready(function(){
+	$(".submitbutton").click(function(){
+		/*($(".flabber").animate({
+			top:'500px',
+			border:'10px solid red',
+			left:'40%',
+			opacity:0
+			
+		}, 2000);*/
+		$(".flabber").slideToggle(1000);
+	});
+	
+	$(".contactus").click(function(){
+	
+		var popup = '<div class="emailpopup " style="position:absolute;width:50%;height:60%;top:10%;margin-left:25%;border:2px solid blue;display:none;">';
+		popup += '<div class="row-fluid"><div class="span6 offset3"></div></div>\
+		<form class="form-horizontal" action="/contact/" method="post">\
+        <div class="control-group"><label for="subject" class="control-label">Subject:</label><input id="subject" type="text" name="subject"></div>\
+        <div class="control-group"><label for="email" class="control-label">Email (optional):</label><input id="email" type="text" name="email"></div>\
+		<div class="control-group"><label for="message" class="control-label">Subject:</label><textarea name="message" rows="10" cols="50" id="subject"></textarea></div> <input type="submit" value="Submit"> \
+    	</form>';	
+		popup += '</div>';
+		$("body").append(popup);
+		$(".emailpopup").slideDown('slow');
+			
+	});
+});
+</script>
+{% endblock %}
+
+{%  block body %}
+
+{%  include "navbar.html" %}
+<!--ENTER HTML HERE-->
+<div class="emailpopup" style="width:50%;margin-left:25%;border: 2px solid blue;">
+      
+
+</div> 
+
+{%  include "footer.html" %}
+	
+     
+     
+{% endblock %}

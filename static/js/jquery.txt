@@ -1,0 +1,9 @@
+<script>
+$(document).ready(function(){
+	$("SELECTOR").EVENT(function(){
+		
+		$("SELECTOR").EFFECT(SPEED);
+	
+	});
+});
+</script>
