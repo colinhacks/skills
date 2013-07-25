@@ -13,12 +13,12 @@ def home(request):
 
 
 def test(request):
-	return render(request, 'marketing.html',{'extension':'template1.html'})
+    return render(request, 'marketing.html',{'extension':'template1.html'})
 
 def again(request):
     return render(request, 'marketing.html',{'extension':'template1.html'})
 	
-	"""
+"""
 def flyaway(request):
 	return render(request, 'flyaway.html',{'extension':'template1.html'})
-	"""
+"""
