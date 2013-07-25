@@ -11,16 +11,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'colinmcd+skills',
-#        'OPTIONS': {
-#            'read_default_file' : os.path.expanduser('~/.my.cnf'),
-#        },
-#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'colinmcd+skills',
+        'OPTIONS': {
+            'read_default_file' : os.path.expanduser('~/.my.cnf'),
+        },
+        'PORT': '',                      # Set to empty string for default. Notused with sqlite3.
+    }
+}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -71,7 +71,7 @@ STATIC_URL = '/skills/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     'static/',
-    'static/css',# Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
