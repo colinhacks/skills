@@ -9,8 +9,6 @@ admin.autodiscover()
 urlpatterns = patterns('skills.views',
     
     url(r'^$', 'home'),
-    url(r'^again/$', 'again'),
-
     # url(r'^initial/', include('initial.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
