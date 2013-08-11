@@ -1,0 +1,129 @@
+{%  extends extension  %}
+
+
+{% block headers %}
+{% load staticfiles %}
+
+<title>test...</title>
+<link rel="stylesheet" href='{% static "css/jumbotron.css" %}' > 
+<link href='http://fonts.googleapis.com/css?family=Diplomata|Londrina+Shadow' rel='stylesheet' type='text/css'>
+<
+<script>
+$(function() {
+  var width = $(window).width();
+  var height = $(window).height();
+  if (width >= 980){
+    $(".awesome-well").css({
+      "font-size":"10em",
+    });
+    $(".banner").css({'height':'400px'});
+
+  } else if (width <980 && width >= 767) {
+    $(".awesome-well").css({"font-size":"9em",});
+    $(".banner").css({'height':'300px'});
+  }else {
+    $(".awesome-well").css({"font-size":"7em", });
+    $(".banner").css({'height':'200px'});
+  }
+
+  $(".fullheight").css({"height":height});
+
+  
+  $(window).resize(function() {
+    var width = $(window).width();
+    if (width >= 980){
+    $(".awesome-well").css({
+      "font-size":"10em"
+    });
+    $(".banner").css({'height':'400px',});
+
+  } else if (width <980 && width >= 767) {
+    $(".awesome-well").css({
+      "font-size":"7em"
+    });
+    $(".banner").css({'height':'300px',});
+  }else {
+    $(".awesome-well").css({
+      "font-size":"4em"
+    });
+    $(".banner").css({'height':'200px',});
+
+  }
+});
+
+  $(".awesome-well").onclick(function(){
+//do stuff, activate modal
+  });
+
+  $(".freedom").backstretch("{% static 'img/freedom.jpg' %}");
+});
+</script>
+
+
+{% endblock %}
+
+{%  block body %}
+    <div class="responsive-icon visible-desktop" style="width:auto;margin-top:55px;max-width:200px">
+      <div style="float:left">
+        <i class="icon-check icon-white" style="margin-top:auto;margin-bottom:auto;"> </i>
+      </div>
+      <div style=""><strong>&nbsp;Smartphone-friendly site! </strong>
+      </div>
+    </div>   
+
+{%  include 'navbar_login.html' %}
+<div class="container">
+      <!-- Jumbotron -->
+  <div class="jumbotron" style="margin-top:15px;">
+    <div class="well">
+      <div class="row-fluid">
+        <div class="span12">
+          <h2 style="">You are
+          </h2>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="letter-box awesome-well">
+            AWESOME!
+          </div>  
+        </div>
+      </div>  
+      <div class="row-fluid">
+        <div style="" class="span6 offset6">Don't believe it? Click on "AWESOME!"
+        </div>
+      </div>
+    </div>
+    <a class="btn btn-large btn-success" href="create/">Create Profile</a>
+        <!--<div style="margin-left:auto;margin-right:auto;font-size:.7em;">(MIT certificates required)</div>-->
+  </div>
+  <div class="row-fluid banner" style="height:400px;width:100%;background-image:url('{% static 'img/freedom.jpg' %}');background-size:100% 100%;">
+    <div class="span6 offset6">
+      <h1 style="color:white;">1. Add your skills.</h1>
+    </div>
+  </div>
+  <div class="row-fluid banner" style="height:400px;background-image:url('{% static 'img/tech.jpg' %}');background-size:100% 400px;">
+    <div class="span6"> <h1 style="color:white;"><br/>&nbsp;&nbsp;2. Meet the right people.</h1></div>
+    <div class="span6">
+     
+    </div>
+  </div>
+  <div class="row-fluid banner" style="height:400px;background-image:url('{% static 'img/success.png' %}');background-size:100% 400px;">
+    <div class="span8">
+    </div>
+    <div class="span4"><h1 style="color:white;">3. Succeed.</h1>
+    </div>
+  </div>
+<hr />
+<div style="width:200px;margin-left:auto;margin-right:auto;">
+<a class="btn btn-success btn-large" href="create/">
+  Create Profile
+</a>
+</div>
+
+
+		{%  include "footer.html" %}
+	
+</div> <!-- /container -->
+     
+{% endblock %}

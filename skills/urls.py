@@ -1,15 +1,18 @@
 from django.conf.urls import patterns, include, url
-
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import login, logout
 
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+
 urlpatterns = patterns('skills.views',
     
-    url(r'^$', 'home'),
-    url(r'^again/$', 'again'),
+    url(r'^$', login, {'template_name':'login.html','extra_context':{'extension':'template1.html'}}),
+    url(r'^create/$', 'login',{'in':'create'}),
+    url(r'^testing/$', 'testing'),
 
     # url(r'^initial/', include('initial.foo.urls')),
 

@@ -5,19 +5,16 @@
 {% load staticfiles %}
 
 <title>test...</title>
-<!-- <link rel="stylesheet" href='{% static "css/jumbotron.css" %}' > -->
-
 <link rel="stylesheet" href='{% static "css/jumbotron.css" %}' > 
-
 
 {% endblock %}
 
 {%  block body %}
-{%  include 'navbar_skills.html' %}
+{%  include 'navbar.html' %}
+
 <div class="container">
 	
       
-
       <!-- Jumbotron -->
       <div class="jumbotron">
         <h1>You are </h1>
@@ -34,20 +31,21 @@
       <!-- Example row of columns -->
       <div class="row-fluid">
         <div class="span4">
-          It's pretty obvious what MIT's biggest problem is.  Everyone realizes right away then forgets (or blocks it from their memory).  There's simply 
+          <p>It's pretty obvious what MIT's biggest problem is.  Everyone realizes right away then forgets (or blocks it from their memory).  There's simply </p>
           <h3 class="caps">too much awesome</h3>
           <p>around MIT to handle.  Sometimes it may seem like everyone else is more awesome then you.  But there's a solution to that problem.  Be more arrogant. It's good for the soul.  </p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
         <div class="span4">
-          Seriously though, everyone* in this place is also way too damn modest.  You have so much to offer, but you need to 
+          <p>Seriously though, everyone* in this place is also way too damn modest.  You have so much to offer, but you need to </p>
           <h3> know the right people</h3>
-          <p>in order to put those skills to work.  Too often a chance for a beautiful partnership/collaboration/friendship is missed because we don't realize there's a person with our same interests across the table.</p>
+          <p>in order to put those skills to work.  Too often a chance for a beautiful partnership or collaboration or friendship is missed because we don't realize there's a person with our same interests sitting across from us at a table.</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p>So do the right thing.  If you want to find a co-founder, hone your computer skills, talk science with some fellow giganerds, or just find some seriously awesome people, then just </p>
+          <h2>make an account.</h2>
+          <p>We promise that your wildest dreams will come true, with a 30-day money-back guarantee.</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
       </div>

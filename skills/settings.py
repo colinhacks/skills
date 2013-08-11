@@ -1,8 +1,34 @@
 # Django settings for skills project.
 
 import os
+
 BASE_URL = ""
-DEBUG = True
+
+try:
+    import sys, os
+    sys.path.append(os.path.abspath('/Users/colinmcd94/Documents/Programs/Django/extras'))
+    import locals
+    DATABASES = locals.DATABASES
+    STATIC_ROOT = '/Users/colinmcd94/Documents/Programs/Django/extras/static'
+    DEBUG = True
+
+except:
+
+    DEBUG = False
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'colinmcd+skills',
+        'OPTIONS': {
+            'read_default_file' : os.path.expanduser('~/.my.cnf'),
+            },
+        'PORT': '',                      # Set to empty string for default. Notused with sqlite3.
+        }
+    }
+    TEST_SETTING = 'Dev try statement failed'
+    STATIC_ROOT = '/mit/colinmcd/web_scripts/skills/static'
+
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -11,16 +37,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'colinmcd+skills',
-        'OPTIONS': {
-            'read_default_file' : os.path.expanduser('~/.my.cnf'),
-        },
-        'PORT': '',                      # Set to empty string for default. Notused with sqlite3.
-    }
-}
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -62,7 +79,7 @@ MEDIA_URL = 'media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/mit/colinmcd/web_scripts/skills/static'
+#STATIC_ROOT = '/mit/colinmcd/web_scripts/skills/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -160,10 +177,4 @@ LOGGING = {
     }
 }
 
-try:
-    import sys, os
-    sys.path.append(os.path.abspath('/Users/colinmcd94/Documents/Programs/Django/extras/locals.py'))
-    import locals
-    DATABASES = locals.DATABASES
-except:
-    pass
+
