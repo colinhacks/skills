@@ -11,6 +11,8 @@ try:
     DATABASES = locals.DATABASES
     STATIC_ROOT = '/Users/colinmcd94/Documents/Programs/Django/extras/static'
     DEBUG = True
+    MEDIA_ROOT =  '/Users/colinmcd94/Documents/Programs/Django/extras/media'
+    MEDIA_URL = "/static/"
 
 except:
 
@@ -24,19 +26,22 @@ except:
             },
         'PORT': '',                      # Set to empty string for default. Notused with sqlite3.
         }
+
     }
     TEST_SETTING = 'Dev try statement failed'
     STATIC_ROOT = '/mit/colinmcd/web_scripts/skills/static'
-
+    MEDIA_ROOT = '/mit/colinmcd/web_scripts/skills/static/img'
+    MEDIA_URL = "/media/"
 
 TEMPLATE_DEBUG = DEBUG
+
+SERVE_MEDIA = True
 
 ADMINS = (
     ('colinmcd', 'colinmcd@mit.edu'),
 )
 
 MANAGERS = ADMINS
-
 
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -68,12 +73,11 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'media/'
+
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -84,6 +88,11 @@ MEDIA_URL = 'media/'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/skills/static/'
+
+# URL used when user is redirected to login screen
+LOGIN_REDIRECT_URL = "/"
+
+LOGIN_URL = "/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -126,6 +135,8 @@ ROOT_URLCONF = 'skills.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'skills.wsgi.application'
 
+AUTH_PROFILE_MODULE="userapp.NewUserProfile"
+DJANGO_SETTINGS_MODULE='skills.settings'
 TEMPLATE_DIRS = (
     'templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -141,11 +152,17 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.admindocs',
+#    'practice',
+    'south',
+    'userapp',
+    'skillapp',
+    'messageapp',
+
 )
 
 # A sample logging configuration. The only tangible logging

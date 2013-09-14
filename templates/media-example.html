@@ -1,0 +1,40 @@
+  <!--PICTURE AND SKILLS-->
+    <!--IMAGE-->
+<div class="media">  
+    <div  style="padding:8px !important;" class="pull-left">
+      <img class="media-object" src="{{ profile.picture.url }}"  alt="Profile Picture" style="border-radius:8px;box-shadow:0px 0px 5px black;max-width:200px;">
+    </div>
+    
+    <SKILLS
+    
+    <div class="media-body" style="padding:8px !important;width:100%;">
+      <fieldset >
+        <legend ><span style="font-size:2em;color:black;font-weight:bold;">Skills</span> &nbsp;&nbsp;</legend>
+          <div class="row-fluid">
+          {% if profile.skills %}
+          <ul class="nav nav-pills">
+          {% for skill in skills %}
+          <li class="active"><a>{{ skill }}</a></li>
+          {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="pull-right">
+            <a class=" btn btn-small btn-success"  href="/enterskills/" style="margin-bottom:15px;">Add</a>
+          </div>
+        </div> 
+      </fieldset>
+    </div>  
+      
+
+
+      {% if profile.additional %}
+      <div class="row-fluid">
+        <div class="span12">
+          <span style="font-size:2em;color:black;font-weight:bold;">Bio</span> &nbsp;&nbsp;       
+          <a class=" btn btn-small btn-success"  href="/enterskills/" style="margin-bottom:15px;">Edit</a><br/>
+          {{ profile.additional }}
+        </div>
+      </div>
+      {% endif %}
+
+  </div>

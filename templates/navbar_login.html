@@ -13,11 +13,12 @@
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" name="username" id="username" placeholder="Email">
+            <form class="navbar-form pull-right" action="" method="post">
+              {% csrf_token %}
+              <input class="span2" type="text" name="email" id="email" placeholder="Email">
               <input class="span2" type="password" name="password" id="password"  placeholder="Password">
               <button type="submit" class="btn">Sign in</button>
-              <input type="hidden" name="next" value="open/" />
+              <input type="hidden" name="next" value="/you/" />
             </form>
           </div><!--/.nav-collapse -->
         </div>

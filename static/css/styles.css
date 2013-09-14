@@ -20,8 +20,8 @@ margin:0;
 padding:1em 0; 
 }
 .center {
-margin-right: auto;
-margin-left:auto;
+margin-right: auto !important;
+margin-left:auto !important;
 }
 @keyframes colorchange
 {
@@ -82,6 +82,69 @@ color:white;
 }hr{
 margin-top:10px;
 margin-bottom:10px;
+} .django-input {
+font-size: xx-large !important;
+height:30px !important;
+margin-bottom:3px !important;
+
+font-weight: bold;
+
+}.errors{
+color:red;
+}textarea{
+width: 100% !important;
+}profpicdiv{
+
+}
+.vertical-center{
+margin-top:auto !important;
+margin-bottom: auto !important;
+}
+.wide {
+	width:100% !important;
+}.high{
+	height:100% !important;
+}.floater{
+box-shadow:0px 0px 8px black;
+border-radius: 8px;
+padding:8px;
+}.whitebox{
+	background:white !important;
+}.pgbox{
+	background: palegreen !important;
+}.lgbox{
+	background: lightgrey !important;
+}.skillpill{
+border-radius:4px;
+background:darkgreen;
+color:white;
+border:1px solid black;
+font-weight: bold;
+padding:2px;
+padding-left: 4px;
+overflow: visible;
+margin:2px;
+float:left;
+font-size:small !important;
+}.deleteskill{
+	width:8px;
+	height:8px !important;
+	display:inline;
+}.inline{
+	display:inline !important;
+}.skilldiv:before,
+.skilldiv:after {
+    content:"";
+    display:table;
+}
+.skilldiv:after {
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.skilldiv {
+    zoom:1;
+}ul.dropdown-menu>li.active{
+	color:blue !important;
 }
 
 

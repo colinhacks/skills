@@ -1,0 +1,226 @@
+{%  extends extension  %}
+
+
+{% block headers %}
+{% load staticfiles %}
+
+<script>
+$(function(){
+  var width = $(window).width();
+  if (width <980) {
+    $("input").css({'max_width':'70px'});
+  }
+
+
+
+  $("input[name='first_name']").css({'color':'lightgrey'}).attr('value','First').addClass('django-input').focus(function(){
+    if ($(this).val() == 'First' || $(this).val() == '' ) { 
+      $(this).attr('value','');
+    }
+    $(this).css({'color':'black'});
+  });
+  
+  $("input[name='first_name']").blur(function(){
+    if ($(this).val() == '') {
+      $(this).attr('value','First');
+      $(this).css({'color':'LightGrey'});
+    }
+  });
+
+  $("input[name='last_name']").css({'color':'lightgrey'}).attr('value','Last').addClass('django-input').focus(function(){
+    if ($(this).val() == 'Last' || $(this).val() == '' ) { 
+      $(this).attr('value','');
+    }
+    $(this).css({'color':'black'});
+  });
+  
+  $("input[name='last_name']").blur(function(){
+    if ($(this).val() == '') {
+      $(this).attr('value','Last');
+      $(this).css({'color':'LightGrey'});
+    }
+  });  
+
+  $("input[name='email']").css({'color':'lightgrey'}).attr('value','Email').addClass('django-input').focus(function(){
+    if ($(this).val() == 'Email' || $(this).val() == '' ) { 
+      $(this).attr('value','');
+    }
+    $(this).css({'color':'black','font-size':'small !important'});
+  });
+  
+  $("input[name='email']").blur(function(){
+    if ($(this).val() == '') {
+      $(this).attr('value','Email');
+      $(this).css({'color':'LightGrey','font-size':'large'});
+    }
+  });
+
+  $("textarea[name='additional']").attr('rows',10).css({'color':'black'}).html('A brief biography (background, interests, personal projects)').click(function(){
+    if ($(this).html() == 'A brief biography (background, interests, personal projects)') { 
+      $(this).html('A brief biography (background, interests, personal projects)');
+    }
+  });
+
+  $("textarea[name='additional']").html('A brief biography (background, interests, personal projects)').blur(function(){
+    if ($(this).html() == '') {
+      $(this).html('A brief biography (background, interests, personal projects)');
+    }
+  });
+
+});
+</script>
+
+{% endblock %}
+
+{%  block body %}
+
+{% if form %}
+<script type="text/javascript">
+  $(function(){
+    $("#id_first_name").attr('value','{{ data.first_name }}').css({'color':'black'});
+    $("#id_last_name").attr('value','{{ data.last_name }}').css({'color':'black'});
+    $("#id_email").attr('value','{{ data.email }}').css({'color':'black'});
+    $("#id_password1").attr('value','{{ data.password1 }}').css({'color':'black'});
+    $("#id_password2").attr('value','{{ data.password2 }}').css({'color':'black'});
+    $("#id_classYear").attr('value','{{ data.classYear }}').css({'color':'black'});
+    $("#id_major").attr('value','{{ data.major }}').css({'color':'black'});
+    $("#id_livingGroup").attr('value','{{ data.livingGroup }}').css({'color':'black'});
+    $("#id_picture").attr('value','{{ data.picture }}').css({'color':'black'});
+    $("#id_additional").attr('value','{{ data.additional }}').css({'color':'black'});
+
+  });
+</script>
+{% endif %}
+   
+<form enctype="multipart/form-data" action="" method="post" >
+    {% csrf_token %}
+    <div class="responsive-icon visible-desktop" style="width:auto;margin-top:55px;max-width:200px">
+      <div style="float:left">
+        <i class="icon-check icon-white" style="margin-top:auto;margin-bottom:auto;"> </i>
+      </div>
+      <div style=""><strong>&nbsp;Smartphone-friendly site! </strong>
+      </div>
+    </div>   
+
+{% if form.errors %}
+{{ form.errors }}
+    <div class="responsive-icon visible-desktop" style="background:darkred;position:absolute;top:10px;right:10px;width:auto;margin-top:55px;max-width:200px">
+      <div style="float:right;margin-top:auto;margin-bottom:auto;color:white;">
+        <i class="icon-exclamation-sign icon-white"> </i><strong>&nbsp;Correct the errors below.   </strong>         
+      </div>
+    </div>  
+{% endif %}
+
+
+{%  include 'navbar_create.html' %}
+
+<div class="container">
+  <div class="row-fluid">
+    <div class="span6">
+      <h2>Create Profile</h2><br/>
+    </div>
+  </div>
+  <div class="row-fluid" style="">
+    <div class="span2 visible-desktop" style="text-align:right;"><strong>The Person</strong></div>
+    <div class="span2 hidden-desktop" style="text-align:left;"><strong>The Person</strong></div>
+    <div class="span2" style="height:40px;">
+      {{ form.first_name }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.first_name.errors }}
+      </span>  
+    </div>
+    <div class="span2 offset1 input_as_p">
+      {{ form.last_name }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.last_name.errors }}
+      </span>
+    </div>
+    <div class="span2 offset1 input_as_p">
+      {{ form.email }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.email.errors }}
+      </span>
+    </div>
+    <div class="offset2"></div>    
+  </div>
+  
+  <hr/>
+
+  <div class="row-fluid">
+    <div class="span2 visible-desktop" style="text-align:right;"><strong>The Password</strong></div>
+    <div class="span2 hidden-desktop" style="text-align:left;"><strong>The Password</strong></div>  
+    {% if form.password2.errors %}
+    <div class="span2 " style="color:darkred">{{ form.password2.errors }}</div>
+    {% else %}
+    <div class="span2 " style="color:black">Passwords should be eight characters long.  </div>
+
+    {% endif %}
+    <div class="span3 offset1">
+      Password&nbsp;{{ form.password1 }}
+      <span class="errors">
+      </span>
+    </div>
+    <div class="span3 offset">
+      Confirm&nbsp;{{ form.password2 }}
+      <span class="errors">
+      </span>
+    </div>
+  </div>
+    <hr />
+
+
+  <div class="row-fluid">
+    <div class="span2 visible-desktop" style="text-align:right;"><strong>The Student</strong></div>
+    <div class="span2 hidden-desktop" style="text-align:left;"><strong>The Student</strong></div>    
+    <div class="span2" style="height:40px;">
+      {{ form.classYear }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.classYear.errors }}
+      </span>
+    </div>
+    <div class="span2 offset1 input_as_p">
+      {{ form.major }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.major.errors }}
+      </span>
+    </div>
+    <div class="span2 offset1 input_as_p">
+      {{ form.livingGroup }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.livingGroup.errors }}
+      </span>
+    </div>
+    <div class="offset2"></div>    
+  </div>
+<hr/>
+  <div class="row-fluid">
+    <div class="span2 visible-desktop" style="text-align:right;"><strong>The Beautiful Individual</strong></div>
+    <div class="span2 hidden-desktop" style="text-align:left;"><strong>The Beautiful Individual</strong></div>
+    <div class="span2" style="height:40px;">
+      Profile Picture
+      <br/>
+      {{ form.picture }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.picture.errors }}
+      </span>
+    </div>
+    <div class="span4 offset1">
+      <div class="hidden-desktop" style="height:15px;"></div>
+      {{ form.additional }}
+      <span class="errors">
+      &nbsp;&nbsp;&nbsp;{{ form.additional.errors }}
+      </span>
+    </div>
+    <div class="offset2"></div>    
+  </div>
+
+  <div width="100%"><div class="center"><input type="submit" value="Proceed" class="btn btn-large btn-success center" /></div></div>
+  </form>
+
+{%  include "footer.html" %}
+</div>
+
+
+	
+     
+{% endblock %}

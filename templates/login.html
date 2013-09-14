@@ -7,7 +7,7 @@
 <title>test...</title>
 <link rel="stylesheet" href='{% static "css/jumbotron.css" %}' > 
 <link href='http://fonts.googleapis.com/css?family=Diplomata|Londrina+Shadow' rel='stylesheet' type='text/css'>
-<
+<script src="{% static 'js/backstretch.js' %}"></script>
 <script>
 $(function() {
   var width = $(window).width();
@@ -21,12 +21,18 @@ $(function() {
   } else if (width <980 && width >= 767) {
     $(".awesome-well").css({"font-size":"9em",});
     $(".banner").css({'height':'300px'});
-  }else {
-    $(".awesome-well").css({"font-size":"7em", });
-    $(".banner").css({'height':'200px'});
-  }
+  }else if (width <767 && width >= 500){
+    $(".awesome-well").css({
+      "font-size":"4em"
+    });
+    $(".banner").css({'height':'200px',});
+  }else{
+    $(".awesome-well").css({"font-size":"3em",});
 
-  $(".fullheight").css({"height":height});
+    $(".banner").css({'height':'100px',});
+  }
+  $(".freedom").backstretch("{% static 'img/freedom.jpg' %}");
+
 
   
   $(window).resize(function() {
@@ -36,18 +42,26 @@ $(function() {
       "font-size":"10em"
     });
     $(".banner").css({'height':'400px',});
-
+    $(".bannertext").css({"font-size":"4em"});
   } else if (width <980 && width >= 767) {
     $(".awesome-well").css({
       "font-size":"7em"
     });
+    $(".bannertext").css({"font-size":"3em"});
     $(".banner").css({'height':'300px',});
-  }else {
+  }else if (width <767 && width >= 500){
     $(".awesome-well").css({
       "font-size":"4em"
     });
+    $(".bannertext").css({"font-size":"2em"});
     $(".banner").css({'height':'200px',});
 
+  }else{
+    $(".awesome-well").css({
+      "font-size":"3em"
+    });
+    $(".bannertext").css({"font-size":"2em"});
+    $(".banner").css({'height':'100px',});
   }
 });
 
@@ -97,26 +111,26 @@ $(function() {
     <a class="btn btn-large btn-success" href="create/">Create Profile</a>
         <!--<div style="margin-left:auto;margin-right:auto;font-size:.7em;">(MIT certificates required)</div>-->
   </div>
-  <div class="row-fluid banner" style="height:400px;width:100%;background-image:url('{% static 'img/freedom.jpg' %}');background-size:100% 100%;">
-    <div class="span6 offset6">
-      <h1 style="color:white;">1. Add your skills.</h1>
+  <div class="row-fluid banner freedom" style="height:400px;width:100%;background-size:100% 100%;">
+    <div class="span9 offset3">
+      <div class="bannertext" style="margin:10px;height:100%;color:white;text-align:right;"><strong>1. Add your skills.</strong></div>
     </div>
   </div>
   <div class="row-fluid banner" style="height:400px;background-image:url('{% static 'img/tech.jpg' %}');background-size:100% 400px;">
-    <div class="span6"> <h1 style="color:white;"><br/>&nbsp;&nbsp;2. Meet the right people.</h1></div>
-    <div class="span6">
+    <div class="span9"> <h1 style="color:white;">&nbsp;&nbsp;2. Meet awesome people.</h1></div>
+    <div class="span3">
      
     </div>
   </div>
-  <div class="row-fluid banner" style="height:400px;background-image:url('{% static 'img/success.png' %}');background-size:100% 400px;">
+  <div class="row-fluid banner" style="height:400px;background-image:url('{% static 'img/success.png' %}');background-position:0% 35%;background-size:100% 400px;text-align:right;">
     <div class="span8">
     </div>
     <div class="span4"><h1 style="color:white;">3. Succeed.</h1>
     </div>
   </div>
-<hr />
-<div style="width:200px;margin-left:auto;margin-right:auto;">
-<a class="btn btn-success btn-large" href="create/">
+<br/>
+<div style="min-width:150px;width:15%;margin-left:auto;margin-right:auto;">
+<a class="btn btn-success btn-large center" href="create/" style="width:80%;">
   Create Profile
 </a>
 </div>
