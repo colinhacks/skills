@@ -1,0 +1,276 @@
+{%  extends extension  %}
+
+
+{% block headers %}
+{% load staticfiles %}
+<!--<link type="text/css" rel="stylesheet" href="{% static 'foundation/css/foundation.min.css'%}" />
+<script type="text/javascript"  src="{% static 'foundation/js/foundation.min.js' %}" ></script>
+-->
+<title>US -- MIT</title>
+<link href='http://fonts.googleapis.com/css?family=Diplomata|Londrina+Shadow' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/backstretch.js' %}"></script>
+<script>
+$(function() {
+  var width = $(window).width();
+  var height = $(window).height();
+  var width = $(window).width();
+    if (width >= 980){
+    $(".awesome-well").css({
+      "font-size":"10em"
+    });
+    $(".banner").css({'height':'400px',});
+    $(".bannertext").css({"font-size":"4em"});
+  } else if (width <980 && width >= 767) {
+    $(".awesome-well").css({
+      "font-size":"7em"
+    });
+    $(".bannertext").css({"font-size":"3em"});
+    $(".banner").css({'height':'300px',});
+  }else if (width <767 && width >= 500){
+    $(".awesome-well").css({
+      "font-size":"4em"
+    });
+    $(".bannertext").css({"font-size":"2em"});
+    $(".banner").css({'height':'200px',});
+
+  }else{
+    $(".awesome-well").css({
+      "font-size":"3em"
+    });
+    $(".bannertext").css({"font-size":"2em"});
+    $(".banner").css({'height':'100px',});
+  }
+
+
+  
+  $(window).resize(function() {
+    var width = $(window).width();
+    if (width >= 980){
+    $(".awesome-well").css({
+      "font-size":"10em"
+    });
+    $(".banner").css({'height':'400px',});
+    $(".bannertext").css({"font-size":"4em"});
+  } else if (width <980 && width >= 767) {
+    $(".awesome-well").css({
+      "font-size":"7em"
+    });
+    $(".bannertext").css({"font-size":"3em"});
+    $(".banner").css({'height':'300px',});
+  }else if (width <767 && width >= 500){
+    $(".awesome-well").css({
+      "font-size":"4em"
+    });
+    $(".bannertext").css({"font-size":"2em"});
+    $(".banner").css({'height':'200px',});
+
+  }else{
+    $(".awesome-well").css({
+      "font-size":"3em"
+    });
+    $(".bannertext").css({"font-size":"2em"});
+    $(".banner").css({'height':'100px',});
+  }
+
+
+});
+
+
+
+  $(".success").backstretch("{% static 'img/success.png' %}");
+  $(".climber").backstretch("{% static 'img/climber.jpg' %}");
+  $(".days").backstretch("{% static 'img/yes-this-is-from-500-days-and-no-i-wont-apologize.jpg' %}");
+
+  $(".fbtn").hover(
+    function(){
+      $(this).animate({'box-shadow':"0px 0px 5px black inset",'background-color':'#5C246E',});
+    },
+    function(){
+      $(this).animate({'box-shadow':"0px 0px 0px black",'background-color':'purple',});
+    });
+});
+</script>
+<style>
+.top{
+  margin-top:41px;
+  font-size:8em !important;
+  line-height:1em !important;
+
+}.bottom{
+  font-size:5em !important;
+  line-height:1em !important;
+
+  
+}.middle{
+  font-size:5em !important;
+  line-height:1em !important;
+
+}.responsive-icon{
+width:200px !important;
+}
+.fbtn{
+  font-family:Verdana;
+  font-size:15pt;
+  background-color:purple;
+  border-radius:2px;
+  min-width:20%;
+  max-width:200px;
+  text-align:center;
+  color:white;
+  padding:17px;
+  font-weight:bold;
+  display:inline;
+  vertical-align:middle;
+  box-shadow:0px 0px 0px black;
+}
+.fbar{
+  font-size:15pt;
+  background-color:#FFE1FF;
+  border-radius:2px;
+  width:100%;
+  text-align:center;
+  font-weight:bold;
+  vertical-align:middle;
+  box-shadow:0px 0px 0px black;
+  border: 0px !important;
+  font-family:'Londrina Shadow';
+  font-size:9em;
+  color:white !important;
+}.super{
+color:white;
+font-size:3em;
+margin:20px;
+font-weight:bold;
+text-align:center;
+line-height:1em;
+text-shadow: -2px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
+vertical-align:middle;
+}.sub{
+vertical-align:middle;
+color:white;
+font-size:2em;
+margin:20px;
+font-weight:bold;
+text-align:center;
+line-height:1em;
+text-shadow:0px 0px 4px white;
+}.banner{
+border-bottom:3px solid white;
+}a.f:visited{
+color:white;
+}
+</style>
+
+{% endblock %}
+
+{%  block body %}
+    <!--<div class="responsive-icon visible-desktop" style="width:auto;margin-top:55px;max-width:200px">
+      <div style="float:left">
+        <i class="icon-check icon-white" style="margin-top:auto;margin-bottom:auto;"> </i>
+      </div>
+      <div style="">
+        <strong>
+          &nbsp;Smartphone friendly
+        </strong>
+      </div>
+    </div>   -->
+
+{%  include 'navbar_login.html' %}
+<div style="width:100%;padding:20px;background-color:#FFE1FF">
+      <!-- Jumbotron -->
+    <div class="band one">
+
+ 
+      <div class="top row letter-box awesome-well">
+        <div class="span12">
+          Hey there sexy.
+          <div style="float:right;"class="fbtn btn-purple">
+            Sign up here
+          </div> 
+        </div>
+      </div>  
+
+      <div class="middle row letter-box awesome-well">
+        <div class="span12">
+        Ya know...you're awesome.
+          <div style="float:right;"class="fbtn btn-purple">
+            Sign up here
+          </div> 
+        </div>
+      </div>  
+
+      <div class="bottom row letter-box awesome-well">
+        <div class="span12">
+          You should brag more.  
+          <div style="float:right;"class="fbtn btn-purple">
+            Sign up here
+          </div> 
+        </div>
+
+      </div>
+    </div>  
+  
+
+
+    
+</div>     <!--<div style="margin-left:auto;margin-right:auto;font-size:.7em;">(MIT certificates required)</div>-->
+
+  <div style="background-color:white;width:100%;height:100px;border-top:2px solid indigo;border-bottom:2px solid indigo;">
+    <div style="margin-top:6px;background-color:inherit;width:100%;height:84px;border-top:2px solid indigo;border-bottom:2px solid indigo;">
+      <div style="vertical-align:middle;padding-top:30px;text-align:center;color:indigo;font-weight:bold;font-size:2.5em;text-shadow:0px 0px 0px indigo;">
+        Here is your mission, whether or not you accept it.
+      </div>
+    </div> 
+  </div>  
+  
+  <div class="row-fluid banner climber" style="height:400px;width:100%;background-size:100% 100%;">
+    <div class="span6 offset6">
+      <div class="super">
+          1. Tell us about yourself
+      </div>
+      <div class="sub">
+          Your interests, passions, projects, pursuits, and skills.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row-fluid banner days" style="text-align:right;height:400px;width:100%;background-size:100% 100%;">
+    <div class="span6 offset6"> 
+      <div class="super">
+          2. Find people like you
+      </div>
+      <div class="sub">
+          <br/>Or people different from you. <br/><br/> Or everyone in your dorm. <br/><br/> Or anyone at all really.
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row-fluid banner success" style="height:400px;width:100%;background-size:100% 100%;">
+
+    <div class="span6 offset6">
+      <div class="super">
+          3. Solve world problems
+      </div>
+      <div class="sub">
+        No presh.
+      </div>
+    </div>
+  </div>
+
+<div class="fbar" style="height:200px;">
+  <a class="f" style="vertical-align:baseline;height:100px;position:relative;top:50px;" href="/create/">
+    <div class="fbtn" style="width:30% !important;min-width:300px !important;height:60% !important;min-height:70px !important;">
+    Let's get started!
+    </div>
+  </a>
+</div>
+	
+<div style="width:100%;padding:5px;background:black;color:white;font-weight:bold;line-height:20px;height:20px;">
+  <div style="display:inline;float:left;padding-left:10px;">&copy; 2013</div>
+  <div style="display:inline;float:right;padding-right:10px;">A Colin McDonnell production</div>
+</div> <!-- /container -->
+     
+{% endblock %}
