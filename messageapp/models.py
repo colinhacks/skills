@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 class MessageThread(models.Model):
 	post_datetime = models.DateTimeField(auto_now_add=True)
 	users = models.ManyToManyField(User)
-	userstring= models.CharField(max_length=500)
+	userstring = models.CharField(max_length=500)
 	
 	def save(self, *args, **kwargs):
 	    if not self.userstring:

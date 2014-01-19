@@ -62,8 +62,8 @@ class FullUserCreationForm(UserCreationForm):
         profile.livingGroup = self.cleaned_data['livingGroup']
         if self.cleaned_data['picture']:
         	profile.picture = self.cleaned_data['picture']
-        if self.cleaned_data['additional']
-        	profile.additional; = self.cleaned_data['additional']
+        if self.cleaned_data['additional']:
+        	profile.additional = self.cleaned_data['additional']
         profile.save()
         return user
 

@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('skills.views',
     
     #url(r'^$', 'login', {'template_name':'login.html','extra_context':{'extension':'template1.html'}}),
-    url(r'^$', 'login', {'template':'login.html','extension':'template1.html'}),
+    url(r'^$', 'login', {'template':'landing.html','extension':'template1.html'}),
     url(r'^create/$', 'create',{'template':'create.html','in':'create'}),
     url(r'^testing/$', 'testing'),
     url(r'^addskills/$', 'enterskills'),
@@ -20,6 +20,7 @@ urlpatterns = patterns('skills.views',
     url(r'^skill/(?P<skillname>[a-zA-Z0-9_]+)$', 'skill'),
     url(r'^logout/$', 'logout'),
     url(r'^messages/admin_send/$', 'send_message'),
+    url(r'^messages/get_people/$', 'get_people'),
     url(r'^skills/removeskill/$', 'remove_skill'),
 
 
@@ -33,6 +34,7 @@ urlpatterns = patterns('skills.views',
      url(r'^test/$', 'test'), 
      #url(r'^form/$', 'form1')
 )
+
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",

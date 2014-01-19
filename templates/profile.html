@@ -27,7 +27,7 @@ $(function(){
   });
 
 
-  $('#enterbox').keypress(function(event) {
+  $("#enterbox").keypress(function(event) {
     if (event.keyCode == 13) {
       var newskill = $('#enterbox').val();
       var old = $("#actual").attr("value");
@@ -114,6 +114,42 @@ $(function(){
 
   });
 
+  $("#add_person").popover({
+    'html':true,
+    'placement':'left',
+    'title':"Add",
+    'content':'<input id="add_person_text_field" type="text" maxlength="20"><br/><input style="margin-right:8px;margin-right:8px;" id="add_person_text_field" class="btn btn-mini pull-right btn-success"  type="button" value="Add Person">'
+  });
+
+
+  $(document).on('keyup','#add_person_text_field',function(){
+    
+    var name_text = $(this).val();
+    //alert(name_text);
+    //alert(skilltext);
+    $.ajax({
+        url: '/messages/get_people/',  // or just url: "/my-url/path/"
+        type: "POST",
+        dataType: 'text',   
+        data: {
+            csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+            name: name_text
+          },
+        success: function(response) {
+          //alert(response);
+          var a ='';
+          },
+        error: function(response){
+          alert('fail');
+          }
+
+    });
+    return true;
+
+  });
+
+
+
 });
 </script>
 {% endblock %}
@@ -125,13 +161,15 @@ $(function(){
 <div class="container" style="padding:15px !important;background-image:url('{% static 'img/green.jpg' %}');background-size:100% 100%;background-repeat:no-repeat;">
   
   <!--Upper row fluid with Names and Message/Suggest skill button -->
-  <div class="row-fluid" style="width:97% !important;padding-left:10px !important;padding-right:px !important;border-radius:10px;box-shadow: 0px 0px 15px grey !important;background:white;">
+  <div class="row-fluid" style="margin-left:auto;margin-right:auto;width:97% !important;padding-left:10px !important;padding-right:10px !important;border-radius:3px;box-shadow: 0px 0px 15px grey !important;background:white;">
     <div class="span6">
-      <h1>{{ user.first_name }}&nbsp;{{ user.last_name }}</h1>
+      <h1>{{ user.first_name }}&nbsp;{{ user.last_name }}&nbsp;
+        <a href="mailto:{{ user.email }}"><small> {{ user.email }}</small></a>
+      </h1>
     </div>
     
     <!--BUTTONS-->
-    <div class="ajaxtest"></div>
+    <!--<div class="ajaxtest"></div>
     <div class="span2">
       <button class="btn btn-block btn-success star-btn" style="margin-top:15px !important;" >Star {{ user.first_name}}</button>
       <div class="text-center" style="width:100%;"><a style="font-size:small !important;" href="/features/">What's this?</a></div>
@@ -139,13 +177,22 @@ $(function(){
     <div class="span2">
       <button class="btn btn-block btn-success suggest-button" style="margin-top:15px !important;" >Suggest Skill</button>
     </div>
-    <div class="span2">
+    <div class="span2" style="">
       <button class="btn btn-block btn-success msg-button" style="margin-top:15px !important;margin-bottom:10px !important;" >Message {{ user.first_name }}</button>
+      &nbsp;&nbsp;
     </div>
-    
+	-->
+		<div class="offset4 span2">
+  		<button class="btn btn-block btn-success star-btn" style="width:auto;padding-left:9px;padding-right:9px;margin-top:15px !important;" >
+  			<i class="icon-white icon-star"></i>&nbsp;Star
+  		</button>
+  <!--<div class="text-center" style="width:100%;"><a style="font-size:small !important;" href="/features/#starring">What's this?</a></div>-->
+		</div>
+	</div>
+
 
     <!-- COMPOSE MESSAGE-->
-    <div style="display:none !important;margin-bottom:10px !important;" class="row-fluid compose-msg">
+    <!--<div style="display:none !important;margin-bottom:10px !important;" class="row-fluid compose-msg">
       <div class="span2 offset6 text-right">
         <strong>Compose Message</strong>
       </div>
@@ -157,13 +204,14 @@ $(function(){
         <br/>
         <textarea maxlength="40" rows="5" style="width:95% !important;" name="body" id="body" placeholder="Write your message here."></textarea><br/>
         <input class="btn btn-small btn-success pull-right" id="msg-send" type="submit" value="Send">
+        <input style="margin-right:8px;" id="add_person" class="btn btn-small pull-right"  type="button" value="Add Person">
         <input style="margin-right:8px;" class="btn btn-small pull-right msg-cancel"  type="button" value="Cancel">
       </div>
-    </div>
+    </div>-->
 
 
     <!--SUGGEST SKILLS-->
-    <div style="display: none !important;margin-bottom:10px !important;" class="row-fluid suggest-skill">
+    <!--<div style="display: none !important;margin-bottom:10px !important;" class="row-fluid suggest-skill">
       <div class="span2 offset6 text-right">
         <strong>Suggest Skills</strong><br/>
       </div>
@@ -172,7 +220,7 @@ $(function(){
 
       <div class="span4" style="margin-bottom:10px;" >
         <input type="hidden" id="actual" name="actual" value="&&">
-        <input style="width:95%;" type="text" id="enterbox" name="skills" id="typeahead" autocomplete="off" data-provide="typeahead" data-items="6" data-source='[{% for skill in allskills %}"{{ skill }}", {% endfor %} "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]' >
+        <input style="width:95%;" type="text" id="enterbox typeahead" name="skills"  autocomplete="off" data-provide="typeahead">
         <br/>
         <div class="anchor"></div>
 
@@ -180,16 +228,15 @@ $(function(){
         <input style="margin-right:8px;" class="btn btn-small pull-right suggest-cancel"  type="button" value="Cancel">
       </div>
     </div>
-
+-->
       
 
-  </div>
 
  <!--NEW ATTEMPT-->
   <div class="row-fluid">
-    <div style="margin-top:8px;margin-left:10px !important;padding:8px !important;border-radius:10px;box-shadow:0px 0px 8px grey;background:white;" class="span3">
+    <div style="margin-top:8px;margin-left:10px !important;padding:8px !important;border-radius:3px;box-shadow:0px 0px 8px grey;background:white;" class="span3">
         <div class="hidden-phone">
-            <img class="" src="{{ picture }}"  alt="Profile Picture" style="border-radius:8px;box-shadow:0px 0px 0px black;width:100%;">
+            <img class="" src="{{ picture }}"  alt="Profile Picture" style="border-radius:3px;box-shadow:0px 0px 0px black;width:100%;">
           
             <div class="text-center"><strong>{{ user.first_name }}&nbsp;{{ user.last_name }}</strong></div>
             <div class="text-center">{{ profile.livingGroup }}</div>
@@ -197,7 +244,7 @@ $(function(){
         </div>
         <div class="visible-phone">
           <div class="inline text-center">
-              <img class="" src="{{ picture }}"  alt="Profile Picture" style="border-radius:8px;box-shadow:0px 0px 0px black;width:45%;"><br/>
+              <img class="" src="{{ picture }}"  alt="Profile Picture" style="border-radius:3px;box-shadow:0px 0px 0px black;width:45%;"><br/>
             
               <span style="width:100%" class=" text-center"><strong>{{ user.first_name }}&nbsp;{{ user.last_name }}</strong></span><br/>
               <span class=" text-center">{{ profile.livingGroup }}</span><br/>
@@ -229,11 +276,10 @@ $(function(){
       {% endif %}
       <br/>
     <!--</div>-->
-    <hr/>
 
     <!--BIO-->
     {% if profile.additional %}
-    <div class="" style="padding:1px;margin-bottom:6px;">
+    <br/><br/><div class="" style="padding:1px;margin-bottom:6px;">
       <div class="text-left" style="display:inline;line-height:10px;font-weight:bold;font-size:large;">Bio</div>
       &nbsp;&nbsp;    
       <button class=" btn btn-small btn-success pull-right" class="edit-bio" style="margin-bottom:0px;">Edit</button>

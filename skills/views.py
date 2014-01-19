@@ -15,12 +15,15 @@ from django.contrib.auth.models import User
 from userapp.forms import FullUserCreationForm
 from skillapp.models import Skill
 from messageapp.models import Message, MessageThread
+from django.core.serializers import serialize
+
 template = 'template1.html'
 
 def home(request):
     return HttpResponse("Check out them apples: <a href='hello' >Hello!</a>")
 
 def login(request, *args, **kwargs):
+    print kwargs['template']
     if request.user.is_authenticated():
         return HttpResponseRedirect('/profile/'+str(request.user.id))
     if request.method == 'POST':
@@ -182,6 +185,39 @@ def remove_skill(request):
             return HttpResponse('Server error.  Youism not deleted.') # incorrect post
     else:
         return HttpResponse("Not ajax.")
+
+def get_people(request):
+    if request.is_ajax():
+        try:
+            if request.POST['name']:
+                print "Yay!" 
+            print "Test"
+            names=request.POST['name'].split(' ')
+            if len(names) == 0 :
+                print "Test 0"
+                return HttpResponse("Please enter a name.")
+            elif len(names)==1:
+                print "Test 1"
+                fn = User.objects.filter(first_name__istartswith=names[0])
+                ln = User.objects.filter(last_name__istartswith=names[0])[:5]
+                if len(fn) > len(ln):
+                    print "Test 1 1"
+                    people = fn[:10]
+                else:
+                    print "Test 1 2"
+                    people = ln[:10]
+            elif len(names)==2:
+                print "Test 3"
+                people = User.objects.filter(first_name__istartswith=names[0],last_name__istartswith=names[1])[:10]
+            else:
+                print "Test 4"
+                people = User.objects.filter(first_name__istartswith=names[0],last_name__icontains=names[-1])[:10]
+
+            return HttpResponse(serialize('json',people))
+        except:
+            return HttpResponse('No users found by that name.') # incorrect post
+    else:
+        return HttpResponseRedirect("/")
 
 def scripts_login(request, **kwargs):
     host = request.META['HTTP_HOST'].split(':')[0]
